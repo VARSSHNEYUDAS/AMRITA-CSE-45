@@ -1,0 +1,2046 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;400;500;600;800&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>DeFortress Security Services</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #060422;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: rgb(10, 10, 40, 0.65);
+            padding-right: 20px;
+            display: flex;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 0;
+        }
+
+        header img {
+            height: 80px;
+            margin: 15px;
+            padding-right: 10px;
+        }
+
+        nav {
+            flex-grow: 1;
+            text-align: right;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 18px;
+        }
+
+        nav a {
+            display: inline-block;
+            color: #ffd700;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #575757;
+            color: #fff;
+        }
+
+        .login-container {
+            display: flex;
+            align-items: center;
+            border-left: 2px solid #ffd700;
+            padding-left: 20px;
+        }
+
+        .login-button {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            margin-left: 10px;
+            transition: transform 0.3s;
+        }
+
+        .login-button:hover {
+            transform: scale(1.1);
+        }
+
+        .hero {
+            background: url('1.jpg') no-repeat center center/cover;
+            height: 100%;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+
+        }
+
+        .hero h2 {
+            background: linear-gradient(to right, #bf8925, #d2bf53, #bf8925);
+            background-clip: text;
+            color: transparent;
+            font-size: 60;
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgb(26, 26, 26, 0.5);
+            padding: 20px;
+            z-index: 10;
+            border-radius: 2%;
+        }
+
+        .popup h3 {
+            color: #ffd700;
+            margin-top: 0;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        .popup input {
+            display: block;
+            margin: 10px 0;
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .popup button {
+            background-color: #ffd700;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .popup button:hover {
+            background-color: #e5c100;
+            transform: scale(1.1);
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(56, 56, 56, 0.2);
+            z-index: 5;
+            backdrop-filter: blur(5px);
+        }
+
+        .popup a {
+            color: #ffd700;
+            text-decoration: none;
+        }
+
+        .popup a:hover {
+            text-decoration: underline;
+        }
+
+        .dark {
+            background-color: #61929a;
+            color: #000000;
+        }
+
+        .dark header {
+            background-color: rgba(204, 204, 204, 0.5);
+        }
+
+        .dark .service {
+            background-color: rgb(107, 107, 107);
+        }
+
+
+
+
+        .menu {
+            width: 100%;
+            padding: 70px 0;
+        }
+
+        .menu h1 {
+            font-size: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .menu h1 span {
+            color: #ffd700;
+            margin-left: 15px;
+            font-family: mv boli;
+        }
+
+        .menu h1 span::after {
+            content: '';
+            width: 100%;
+            height: 2px;
+            background: #ffd700;
+            display: block;
+            position: relative;
+            bottom: 15px;
+        }
+
+        .menu .menu_box {
+            width: 95%;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            grid-gap: 15px;
+        }
+
+        .menu .menu_box .menu_card {
+            width: 325px;
+            height: 480px;
+            padding-top: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px #fac031;
+        }
+
+        .menu .menu_box .menu_card .menu_image {
+            width: 300px;
+            height: 245px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .menu .menu_box .menu_card .menu_image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: 0.3s;
+        }
+
+        .menu .menu_box .menu_card .menu_image:hover img {
+            transform: scale(1.1);
+        }
+
+        .menu .menu_box .menu_card .small_card {
+            width: 45px;
+            height: 45px;
+            float: right;
+            position: relative;
+            top: -240px;
+            right: -8px;
+            opacity: 0;
+            border-radius: 7px;
+            transition: 0.3s;
+        }
+
+        .menu .menu_box .menu_card:hover .small_card {
+            position: relative;
+            top: -240px;
+            right: 20px;
+            opacity: 1;
+        }
+
+        .menu .menu_box .menu_card .small_card i {
+            font-size: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 50px;
+            color: #f2ecec;
+            cursor: pointer;
+            text-shadow: 0 0 6px #f1ecec;
+            transition: 0.2s;
+        }
+
+        .menu .menu_box .menu_card .small_card i:hover {
+            color: #ffd700;
+        }
+
+        .menu .menu_box .menu_card .menu_info h2 {
+            width: 60%;
+            text-align: center;
+            margin: 20px auto 10px auto;
+            font-size: 25px;
+            color: #ffd700;
+        }
+
+        .menu .menu_box .menu_card .menu_info p {
+            text-align: center;
+            margin-top: 18px;
+            line-height: 21px;
+            font-size: 16.5;
+        }
+
+        .menu .menu_box .menu_card .menu_info h3 {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .menu .menu_box .menu_card .menu_info .menu_icon {
+            color: #ffd700;
+            text-align: center;
+            margin: 10px 0 10px 0;
+        }
+
+        .menu .menu_box .menu_card .menu_info .menu_btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: mv boli;
+            text-decoration: none;
+            color: rgb(6, 6, 6);
+            background: #ffd700;
+            padding: 8px 10px;
+            margin: 0 80px;
+            margin-top: 15%;
+            transition: 0.3s;
+        }
+
+        .menu_btn {
+            padding-bottom: 0%;
+        }
+
+        .menu_box {
+            align-items: center;
+            justify-content: center;
+        }
+
+        .menu_card {
+            justify-content: center;
+            align-items: center;
+            background-position-y: -15px;
+        }
+
+        .bod {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card {
+            width: 300px;
+            height: 500px;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 3px solid #ffd700;
+            position: relative;
+            margin: 20px;
+        }
+
+        .card-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+
+        }
+
+        .card-body {
+            width: 79.9%;
+            height: 100%;
+            top: 0;
+            right: -100%;
+            position: absolute;
+            background: #1f3d4719;
+            backdrop-filter: blur(8px);
+            border-radius: 15px;
+            color: #ffffff;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            transition: 2s;
+        }
+
+        .card:hover .card-body {
+            right: 0;
+        }
+
+        .carc-title {
+            text-transform: uppercase;
+            font-size: 50px;
+            font-weight: 500;
+        }
+
+        .card-sub-title {
+            text-transform: capitalize;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .card-info {
+            font-size: 16px;
+            line-height: 25px;
+            margin: 40px 0;
+            font-weight: 500;
+        }
+
+        .card-btn {
+            color: #e5e5e5;
+            width: 120px;
+            background: #344047;
+            padding: 10px 20px;
+            margin-left: 30%;
+            border-radius: 5px;
+            text-transform: capitalize;
+            border: none;
+            outline: none;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .p3 {
+            color: #ffd700;
+        }
+
+        .container1 {
+            padding: 100px;
+        }
+
+        .lines {
+            width: 100%;
+            height: 45px;
+            position: relative;
+        }
+
+        .lines::after,
+        .lines::before {
+            content: '';
+            position: absolute;
+            margin: auto;
+            height: 2px;
+            background: #ebeae8;
+            width: 45%;
+            top: 45%;
+        }
+
+        .lines::after {
+            left: 0;
+        }
+
+        .lines::before {
+            right: 0;
+        }
+
+        .circles {
+            height: 40px;
+            width: 40px;
+            border: 2px solid #ebeae8;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            border-radius: 50%;
+        }
+
+        .c1 {
+            color: #ffd700;
+            text-align: center;
+            font-family: mv boli;
+            font-size: 40px;
+        }
+
+        .c111 {
+            color: rgb(6, 6, 6);
+            text-align: center;
+            font-family: mv boli;
+            font-size: 40px;
+        }
+
+        .c2 {
+            height: 100px;
+            width: 700px;
+            padding-left: 70px;
+            color: #ffd700;
+            font-size: 25px;
+        }
+
+        .c3 {
+            height: 100px;
+            width: 300px;
+            padding-left: 3%;
+            padding-bottom: 50px;
+        }
+
+        .c4 {
+            background-color: #ffd700;
+            text-align: center;
+            height: 700px;
+        }
+
+        .p1 {
+            color: rgb(6, 6, 6);
+            font-size: 22;
+        }
+
+        .i11 {
+            width: 650px;
+            height: 400px;
+            border: 1px solid rgb(6, 6, 6);
+            border-radius: 2%;
+        }
+
+        .c5 {
+            text-align: center;
+            height: 500px;
+        }
+
+        .c21 {
+            height: 100px;
+            width: 700px;
+            color: #ffd700;
+            font-size: 22;
+            padding-left: 200px;
+        }
+
+        .c31 {
+            height: 100px;
+            width: 300px;
+            padding-left: 50px;
+        }
+
+        .i1 {
+            width: 600px;
+            height: 450px;
+            border: 1px solid #ffd700;
+            border-radius: 2%;
+        }
+
+        .c22 {
+            height: 650px;
+            margin: 50px;
+            color: #ffffff;
+            font-size: 22;
+            text-align: center;
+        }
+
+
+        .review {
+            width: 100%;
+            height: 100vh;
+            padding: 70px 0;
+        }
+
+        .review h1 {
+            font-size: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .review h1 span {
+            margin-left: 15px;
+            color: #fac031;
+            font-family: mv boli;
+        }
+
+        .review h1 span::after {
+            content: '';
+            width: 100%;
+            height: 2px;
+            background: #fac031;
+            position: relative;
+            bottom: 15px;
+            display: block;
+        }
+
+        .review .review_box {
+            width: 95%;
+            margin: 70px auto;
+            display: flex;
+        }
+
+        .review .review_box .review_card {
+            width: 400px;
+            height: 500px;
+            box-shadow: 0 2px 8px rgb(250, 192, 49);
+            border-radius: 20%;
+            padding: 8px 20px;
+            margin: 0 8px;
+        }
+
+        .review .review_box .review_card .review_profile {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            transition: 0.3s;
+        }
+
+        .review .review_box .review_card:hover .review_profile {
+            transform: translateY(-60px);
+        }
+
+        .review .review_box .review_card .review_profile img {
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 20%;
+            border: 5px solid #cccccc;
+        }
+
+        .review .review_box .review_card .review_text {
+            text-align: center;
+        }
+
+        .review .review_box .review_card .review_text .name {
+            color: #fac031;
+            transition: 0.3s;
+        }
+
+        .review .review_box .review_card:hover .review_text .name {
+            transform: translateY(-50px);
+        }
+
+        .review .review_box .review_card .review_text .review_icon {
+            color: #fac031;
+            transition: 0.3s;
+        }
+
+        .review .review_box .review_card:hover .review_text .review_icon {
+            transform: translateY(-30px);
+        }
+
+        .review .review_box .review_card .review_text .review_social i {
+            margin: 5px 1px;
+            font-size: 15px;
+            opacity: 0;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .review .review_box .review_card:hover .review_text .review_social i {
+            opacity: 1;
+            transform: translateY(-8px);
+        }
+
+        .review .review_box .review_card .review_text p {
+            text-align: center;
+            line-height: 22px;
+            transition: 0.3s;
+        }
+
+        .review .review_box .review_card:hover .review_text p {
+            margin-top: 5px;
+        }
+
+        .wrapper .title {
+            text-align: center;
+        }
+
+        .title h4 {
+            display: inline-block;
+            padding: 20px;
+            color: #ffd700;
+            font-size: 50px;
+            font-weight: 500;
+            letter-spacing: 1.2px;
+            word-spacing: 5px;
+            border: 1px solid #ffd700;
+            border-radius: 15px;
+            text-transform: uppercase;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+            word-wrap: break-word;
+        }
+
+        .wrapper .card_Container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin: 40px 0;
+        }
+
+        .card_Container .card {
+            position: relative;
+            width: 300px;
+            height: 330px;
+            margin: 20px;
+            overflow: hidden;
+            box-shadow: 0 30px 30px -20px rgba(0, 0, 0, 1),
+                inset 0 0 0 1000px rgba(67, 52, 109, .6);
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card .imbBx,
+        .imbBx img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .card .content {
+            position: absolute;
+            bottom: -160px;
+            width: 100%;
+            height: 160px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 -10px 10px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            transition: bottom 0.5s;
+            transition-delay: 0.65s;
+        }
+
+        .card:hover .content {
+            bottom: 0;
+            transition-delay: 0s;
+        }
+
+        .content .contentBx h3 {
+            text-transform: uppercase;
+            color: #ffffff;
+            letter-spacing: 2px;
+            font-weight: 500;
+            font-size: 18px;
+            text-align: center;
+            margin: 20px 0 15px;
+            line-height: 1.1em;
+            transition: 0.5s;
+            transition-delay: 0.6s;
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+
+        .content .contentBx h4 {
+            text-transform: uppercase;
+            color: #000000;
+            letter-spacing: 2px;
+            font-weight: 500;
+            font-size: 18px;
+            text-align: center;
+            margin: 20px 0 15px;
+            line-height: 1.1em;
+            transition: 0.5s;
+            transition-delay: 0.6s;
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+
+        .card:hover .content .contentBx h3 {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .content .contentBx h3 span {
+            font-size: 12px;
+            font-weight: 300;
+            text-transform: initial;
+        }
+
+        .content .sci {
+            position: relative;
+            bottom: 10px;
+            display: flex;
+        }
+
+        .content .sci li {
+            list-style: none;
+            margin-right: 35;
+            transform: translateY(40px);
+            transition: 0.5s;
+            opacity: 0;
+            transition-delay: calc(0.2s * var(--i));
+        }
+
+        .card:hover .content .sci li {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .content .sci li a {
+            color: #ffffff;
+            font-size: 24px;
+        }
+
+        body,
+        html {
+            width: 100%;
+            min-height: 100vh;
+            color: white;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container2 {
+            width: 80%;
+            font-family: 'Poppins', sans-serif;
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px 8%;
+
+        }
+
+        .container2 .row {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 1100px;
+        }
+
+        .row section.col {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .row section.left {
+            flex-basis: 35%;
+            min-width: 320px;
+            margin-right: 60px;
+        }
+
+        .row section.right {
+            flex-basis: 60%;
+        }
+
+        .contactTitle h1 {
+            font-size: 28px;
+            color: #ddd;
+            margin-bottom: 10px;
+        }
+
+        .contactTitle h3 {
+            font-size: 22px;
+            color: #ccc;
+            margin-bottom: 20px;
+        }
+
+        .contactTitle p {
+            font-size: 17px;
+            color: #ccc;
+            letter-spacing: 1px;
+            line-height: 1.2;
+            padding-bottom: 22px;
+        }
+
+        .contactInfo {
+            margin-bottom: 16px;
+        }
+
+        .contactInfo .iconGroup {
+            display: flex;
+            align-items: center;
+            margin: 25px 0px;
+        }
+
+        .iconGroup .icon {
+            width: 45px;
+            height: 45px;
+            border: 2px solid dodgerblue;
+            border-radius: 50%;
+            margin-right: 20px;
+            position: relative;
+        }
+
+        .iconGroup .icon i {
+            font-size: 20px;
+            color: #ddd;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .iconGroup .details span {
+            display: block;
+            color: #888;
+            font-size: 18px;
+        }
+
+        .iconGroup .details span:nth-child(1) {
+            text-transform: uppercase;
+            color: #ccc;
+        }
+
+        .socialMedia {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            flex-wrap: wrap;
+            margin: 22px 0px 20px;
+        }
+
+        .socialMedia a {
+            width: 35px;
+            height: 35px;
+            text-decoration: none;
+            text-align: center;
+            margin-right: 15px;
+            border-radius: 5px;
+            background-color: dodgerblue;
+            transition: 0.4s;
+        }
+
+        .socialMedia a i {
+            color: #ddd;
+            font-size: 18px;
+            line-height: 35px;
+            border: 1px solid transparent;
+            transition-delay: 0.4s;
+        }
+
+        .socialMedia a:hover {
+            transform: translateY(-5px);
+            background-color: #2e2e2e;
+            color: dodgerblue;
+            border: 1px solid dodgerblue;
+        }
+
+        .socialMedia a:hover i {
+            color: dodgerblue;
+        }
+
+        .messageForm {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            padding-top: 30px;
+        }
+
+        .inputGroup {
+            margin: 18px 0px;
+            position: relative;
+        }
+
+        .halfWidth {
+            flex-basis: 48%;
+        }
+
+        .fullWidth {
+            flex-basis: 100%;
+        }
+
+        .messageForm input,
+        .messageForm textarea {
+            width: 100%;
+            font-size: 18px;
+            padding: 2px 0px;
+            background-color: transparent;
+            color: #ddd;
+            border: none;
+            border-bottom: 2px solid #666;
+            outline: none;
+        }
+
+        .messageForm textarea {
+            resize: none;
+            height: 220px;
+            display: block;
+        }
+
+        textarea::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        textarea::-webkit-scrollbar-track {
+            background-color: #1e1e1e;
+            border-radius: 15px;
+        }
+
+        textarea::-webkit-scrollbar-thumb {
+            background-color: dodgerblue;
+            border-radius: 15px;
+        }
+
+        .inputGroup label {
+            position: absolute;
+            left: 0;
+            bottom: 4px;
+            color: #888;
+            font-size: 18px;
+            transition: 0.4s;
+            pointer-events: none;
+        }
+
+        .inputGroup:nth-child(4) label {
+            top: 2px;
+        }
+
+        .inputGroup input:focus~label,
+        .inputGroup textarea:focus~label,
+        .inputGroup input:valid~label,
+        .inputGroup textarea:valid~label {
+            transform: translateY(-30px);
+            font-size: 16px;
+        }
+
+        .inputGroup button {
+            padding: 8px 16px;
+            font-size: 18px;
+            background-color: dodgerblue;
+            color: #ddd;
+            border: 1px solid transparent;
+            border-radius: 25px;
+            outline: none;
+            cursor: pointer;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+            transition: 0.4s;
+        }
+
+        .inputGroup button:hover {
+            background-color: #2e2e2e;
+            color: dodgerblue;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+            border: 1px solid dodgerblue;
+        }
+
+        @media(max-width: 1100px) {
+            .halfWidth {
+                flex-basis: 100%;
+            }
+        }
+
+        @media(max-width: 900px) {
+            .container2 .row {
+                flex-wrap: wrap;
+            }
+
+            .row section.left,
+            .row section.right {
+                flex-basis: 100%;
+                margin: 0px;
+            }
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgb(25, 25, 99);
+            border-radius: 70%;
+            padding: 0.5rem;
+            text-decoration: none;
+            transition: 0.2s ease-out;
+        }
+
+        .back-to-top span {
+            color: #fff;
+            font-size: 3rem;
+            transition: 0.2s ease-out;
+        }
+
+        .back-to-top:hover {
+            background-color: transparent;
+        }
+
+        .back-to-top:hover span {
+            transform: translateY(-4px);
+        }
+
+        .footer {
+            background: #2c2f33;
+            margin-top: 3%;
+            color: #fff;
+            width: 100%;
+        }
+
+        .footer .containerf {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        .footer-brand {
+            margin-bottom: 10px;
+        }
+
+        .brand {
+            height: 40px;
+            width: 200px;
+        }
+
+        .footer-menu {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .footer-menu li {
+            margin: 5px 15px;
+        }
+
+        .footer-menu a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .footer-menu a:hover {
+            color: #ff2b00;
+        }
+
+        .footer-social {
+            margin: 15px 0;
+        }
+
+        .footer-social a {
+            color: #fff;
+            font-size: 1.5em;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+
+        .footer-social a:hover {
+            color: #ff2b00;
+        }
+
+        .footer-bottom {
+            background: #23272a;
+            padding: 10px 0;
+            width: 100%;
+            text-align: center;
+            font-size: 0.9em;
+            color: #ccc;
+        }
+
+        @media (max-width: 900px) {
+            .footer-menu {
+                flex-direction: column;
+            }
+
+            .footer-menu li {
+                margin: 5px 0;
+            }
+        }
+
+
+        < !--form-->
+        .container {
+            display: none;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 25px;
+        }
+
+        .container form {
+            width: 700px;
+            padding: 20px;
+            background: rgba(17, 13, 50, 0.5);
+            box-shadow: 5px 5px 30px rgb(49, 48, 48);
+            border-radius: 2%;
+        }
+
+        .container form .row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .container form .row .col {
+            flex: 1 1 250px;
+        }
+
+        .col .title {
+            font-size: 20px;
+            color: #ffd700;
+            padding-bottom: 5px;
+        }
+
+        .col .inputBox {
+            margin: 15px 0;
+        }
+
+        .col .inputBox label {
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .col .inputBox input,
+        .col .inputBox select {
+            width: 100%;
+            border: 0;
+            border-radius: 15px;
+            padding: 10px 15px;
+            font-size: 15px;
+        }
+
+        .col .inputBox input:focus,
+        .col .inputBox select:focus {
+            border: 1px solid #000;
+        }
+
+        .col .flex {
+            display: flex;
+            gap: 15px;
+        }
+
+        .col .flex .inputBox {
+            flex: 1 1;
+            margin-top: 5px;
+        }
+
+        .col .inputBox img {
+            height: 34px;
+            margin-top: 5px;
+            filter: drop-shadow(0 0 1px #000);
+        }
+
+        .container form .submit_btn {
+            width: 100%;
+            padding: 12px;
+            font-size: 17px;
+            background: rgb(28, 61, 98);
+            color: #fff;
+            margin-top: 5px;
+            cursor: pointer;
+            letter-spacing: 1px;
+        }
+
+        .container form .submit_btn:hover {
+            background: #3d17fb;
+        }
+
+        input::-webkit-inner-spin-button,
+        input::-webkit-outer-spin-button {
+            display: none;
+        }
+    </style>
+</head>
+
+<body id="home">
+    <header>
+        <img src="defortress-high-resolution-logo-transparent.png" alt="Logo">
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#services">Services</a>
+            <a href="#about">About Us</a>
+            <a href="#contact">Contact</a>
+            <a onclick="myFunction()">Switch mode</a>
+        </nav>
+        <div class="login-container">
+            <button class="login-button" onclick="openLogin()">
+                <svg width="24" height="24" fill="#ffd700" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                </svg>
+            </button>
+        </div>
+        <span id="username" style="color: #ffd700;"></span>
+    </header>
+    <div class="hero" id="imghero">
+        <h2>We Protect | What Matters</h2>
+    </div>
+
+
+
+
+    <div class="container1">
+        <div class="lines">
+            <div class="circle"></div>
+        </div>
+    </div>
+    <div style="display: flex;" class="c4" id="about">
+        <div class="c2">
+            <h2 class="c111"><u>About Us:</u></h2>
+            <p class="p1">DeFortress is a leading global integrated security company, committed to delivering security
+                products, services, and solutions to businesses across industries. We have the presence at 2000+
+                customer facilities in 19 States and union territories across India. Our strong ManTech Security
+                solutions and remote monitoring facility from a global command centre help fortify our operations.</p>
+            <p class="p1">Being the top provider of security solutions, we maintain a comprehensive database of
+                efficient professionals for catering to your manpower requirements. We combine state-of-the-art
+                technology with a highly trained workforce to offer the most efficient security solutions that meet your
+                specifications. We also have a specialized recruitment process and training module for the respective
+                sectors and situations to which our security team gets deployed.</p>
+            <p class="p1">We value your demands and offer customized modern security services. To ensure this, we
+                provide advanced training to our security guards on the latest safety measures and equipment so that
+                they can prevent industrial hazards or accidents in your workplace.</p>
+        </div>
+        <div class="c3">
+            <br><br><br><br><br><br><br><br><br><br><br>
+            <img class="i11" src="img6.jpeg">
+        </div>
+    </div>
+    <div style="display: flex;" class="c5">
+        <div class="c31">
+            <br><br><br><br><br><br><br><br><br><br>
+            <img class="i1" src="img7.jpeg">
+        </div>
+        <div class="container1">
+            <div class="lines">
+                <div class="circle"></div>
+            </div>
+        </div>
+        <div class="c21">
+            <h3 class="c1"><u>Protect Your Business with the Right Security Solutions</u></h3>
+            <p>At Terrier, we aim to help ensure the safety and security of businesses through our state-of-the-art
+                security solutions. We deliver this by integrating manpower services with e-surveillance, intelligent
+                business services, hardware, software, and other IoT enabled sensors. We offer a diverse portfolio
+                ranging from manned guarding and high-end e-surveillance to command centre-led business solutions such
+                as remote asset management, access management, energy optimization, and retail ROI enhancement. We
+                provide our security and business services expertise pan India to IT/ITES and manufacturing sectors,
+                solar farms, critical infrastructure like (Dams, Airports, and Hospitals), leading retail chains, and
+                telecom providers.</p>
+            <p>Over the years, we have developed the capability to deploy fully-trained security personnel, on-site,
+                across India. It is our constant endeavour to deliver the highest quality of products and services to
+                our prestigious clientele, which includes Fortune 500 companies and technological giants. With over
+                three decades of industry experience, you can trust us to deliver the right solution for your specific
+                needs and proactively secure your places, people, and assets.</p>
+        </div>
+    </div>
+    <br><br><br><br>
+    <div class="c22">
+        <div class="container1">
+            <div class="circle"></div>
+        </div>
+        <h2 class="c1"><u>We Offer State-of-the-Art Security Services</u></h2><br>
+        <p>At Terrier Security Services, we partner with you, leveraging our expertise and experience, cutting-edge
+            technology and systems, and industry knowledge to provide comprehensive, customized security solutions that
+            help you protect against threats. If you are looking to have a security solution for long-term or short-term
+            assignments, we can provide solutions that best fit your security needs and budget.</p>
+        <p>We are structured to deliver security expertise for specialized markets as well as multiple security
+            solutions utilizing people, technology, and knowledge.</p>
+        <p>Being a leading provider and a trusted security service company, we provide innovative security services
+            across industries that ensure uncompromising value, cost-effectiveness, and results for your business.
+            Through this, we empower you to make better, more informed decisions about security operations. We also help
+            you quantify and understand your risks, identify and respond to threats and unify your organization on
+            security priorities. With our experts and proven frameworks, we make sure that we provide you with a deep
+            understanding of business and compliance needs by assessing, reducing, and managing your security risks.</p>
+    </div>
+    <br>
+
+    <div class="lines">
+        <div class="circle"></div>
+    </div>
+    <div class="menu" id="services">
+        <h1 style="color: #ffd700;">Services We Offer</h1>
+
+        <div class="bod">
+            <div class="card">
+                <img src="cc.jpeg" class="card-img">
+                <div class="card-body">
+                    <h1 class="card-title">E - Security</h1>
+                    <p class="card-sub-title"></p>
+                    <p class="card-info"> We provide 24/7 online Security by using high-end cc cams.</p>
+
+                    <button class="card-btn" onclick="openForm()">Book Now</button>
+                </div>
+            </div>
+            <div class="card">
+                <img src="esec.jpeg" class="card-img">
+                <div class="card-body">
+                    <h1 class="card-title">Cyber Security</h1>
+                    <p class="card-sub-title"></p>
+                    <p class="card-info">We provide Cyber Security for Startups ; Banks ; and For Several Other
+                        Companies.</p>
+
+                    <button class="card-btn" onclick="openForm()">Book Now</button>
+                </div>
+            </div>
+            <div class="card">
+                <img src="img10.jpeg" class="card-img">
+                <div class="card-body">
+                    <h1 class="card-title">VIP- Security</h1>
+                    <p class="card-sub-title"></p>
+                    <p class="card-info">We provide normal and Armed Security for VIP's and Bouncers for clubs,etc.</p>
+
+                    <button class="card-btn" onclick="openForm()">Book Now</button>
+                </div>
+            </div>
+            <div class="card">
+                <img src="img3.jpg" class="card-img">
+                <div class="card-body">
+                    <h1 class="card-title">Site Protection</h1>
+                    <p class="card-sub-title"></p>
+                    <p class="card-info">We provide Protection for sites like - Banks ; Schools/Colleges ; and for
+                        Museums.</p>
+
+                    <button class="card-btn" onclick="openForm()">Book Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container1">
+        <div class="lines">
+            <div class="circle"></div>
+        </div>
+    </div>
+    <div class="review" id="Review">
+        <h1 style="color: #fac031;">Admin<span>Review</span></h1>
+
+        <div class="review_box">
+            <div class="review_card">
+
+                <div class="review_profile">
+                    <img src="img13.jpeg">
+                </div>
+
+                <div class="review_text">
+                    <h2 class="name">Klaus</h2>
+
+                    <div class="review_icon">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+
+                    <div class="review_social">
+                        <i class="fa-brands fa-facebook-f"></i>
+                        <i class="fa-brands fa-instagram"></i>
+                        <i class="fa-brands fa-twitter"></i>
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </div>
+                    <br><br><br><br>
+                    <p class="p3">
+                        "Impressed with the professionalism and efficiency of this security company. The team tailored
+                        their services to our needs, and the technology is top-notch. Highly recommend!"
+                        <br>
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="review_card">
+
+                <div class="review_profile">
+                    <img src="img14.jpeg">
+                </div>
+
+                <div class="review_text">
+                    <h2 class="name">Alicia</h2>
+
+                    <div class="review_icon">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+
+                    <div class="review_social">
+                        <i class="fa-brands fa-facebook-f"></i>
+                        <i class="fa-brands fa-instagram"></i>
+                        <i class="fa-brands fa-twitter"></i>
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </div>
+
+                    <br><br><br><br>
+                    <p class="p3">
+                        "Hired for our corporate office, and the guards are well-trained and prompt. Customer support is
+                        responsive. Setup took a bit longer than expected, but worth it. Reliable service."
+                        <br>
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="review_card">
+
+                <div class="review_profile">
+                    <img src="img15.jpeg">
+                </div>
+
+                <div class="review_text">
+                    <h2 class="name">Miles</h2>
+
+                    <div class="review_icon">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+
+                    <div class="review_social">
+                        <i class="fa-brands fa-facebook-f"></i>
+                        <i class="fa-brands fa-instagram"></i>
+                        <i class="fa-brands fa-twitter"></i>
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </div>
+
+                    <br><br><br><br>
+                    <p class="p3">
+                        "Excellent security solution after neighborhood break-ins. State-of-the-art system and smooth
+                        installation. User-friendly mobile app and great customer service. Five stars!"
+                        <br>
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="review_card">
+
+                <div class="review_profile">
+                    <img src="img16.jpeg">
+                </div>
+
+                <div class="review_text">
+                    <h2 class="name">Stark</h2>
+
+                    <div class="review_icon">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+
+                    <div class="review_social">
+                        <i class="fa-brands fa-facebook-f"></i>
+                        <i class="fa-brands fa-instagram"></i>
+                        <i class="fa-brands fa-twitter"></i>
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </div>
+
+                    <br><br><br><br>
+                    <p class="p3">
+                        "Exceptional service for our retail store. Vigilant security personnel and high-quality
+                        equipment. Installation was seamless, and we feel much safer. Highly recommend!"
+                        <br>
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="container1">
+        <div class="lines">
+            <div class="circle"></div>
+        </div>
+        <div class="wrapper">
+
+            <div class="title">
+                <h4>Our Team </h4>
+            </div>
+
+            <div class="card_Container">
+
+                <div class="card">
+
+                    <div class="imbBx">
+                        <img src="subbu.png" alt="">
+                    </div>
+
+                    <div class="content">
+                        <div class="contentBx">
+                            <h3>Subbarao <br></h3>
+                        </div>
+                        <ul class="sci">
+                            <li style="--i: 1">
+                                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                            </li>
+                            <li style="--i: 2">
+                                <a href="#"><i class="fa-brands fa-github"></i></a>
+                            </li>
+                            <li style="--i: 3">
+                                <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <div class="card">
+
+                    <div class="imbBx">
+                        <img src="das.jpg" alt="">
+                    </div>
+
+                    <div class="content">
+                        <div class="contentBx">
+                            <h3>V . Das <br></h3>
+                        </div>
+                        <ul class="sci">
+                            <li style="--i: 1">
+                                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                            </li>
+                            <li style="--i: 2">
+                                <a href="#"><i class="fa-brands fa-github"></i></a>
+                            </li>
+                            <li style="--i: 3">
+                                <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <div class="card">
+
+                    <div class="imbBx">
+                        <img src="santosh.jpg" alt="">
+                    </div>
+
+                    <div class="content">
+                        <div class="contentBx">
+                            <h3>Santosh <br></h3>
+                        </div>
+                        <ul class="sci">
+                            <li style="--i: 1">
+                                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                            </li>
+                            <li style="--i: 2">
+                                <a href="#"><i class="fa-brands fa-github"></i></a>
+                            </li>
+                            <li style="--i: 3">
+                                <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+                <div class="card">
+
+                    <div class="imbBx">
+                        <img src="mehh.jpg" alt="">
+                    </div>
+
+                    <div class="content">
+                        <div class="contentBx">
+                            <h3>Sashank<br></h3>
+                        </div>
+                        <ul class="sci">
+                            <li style="--i: 1">
+                                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                            </li>
+                            <li style="--i: 2">
+                                <a href="#"><i class="fa-brands fa-github"></i></a>
+                            </li>
+                            <li style="--i: 3">
+                                <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <div class="card">
+
+                    <div class="imbBx">
+                        <img src="yash3.jpg" alt="">
+                    </div>
+
+                    <div class="content">
+                        <div class="contentBx">
+                            <h3>Yaswanth <br> </h3>
+                        </div>
+                        <ul class="sci">
+                            <li style="--i: 1">
+                                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                            </li>
+                            <li style="--i: 2">
+                                <a href="#"><i class="fa-brands fa-github"></i></a>
+                            </li>
+                            <li style="--i: 3">
+                                <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="overlay" id="overlay1"></div>
+    <div class="popup" id="loginPopup">
+        <h3>Login</h3><br>
+        <input type="text" id="loginUsername" placeholder="Username" required>
+        <input type="password" id="loginPassword" placeholder="Password" required><br>
+        <button onclick="UpCheck()"><b>Login</b></button>
+        <button style="margin-left: 70px;" onclick="closeLogin()"><b>Cancel</b></button>
+        <p>Not signed in yet? <a href="#" onclick="signUp(); closeLogin()">Register</a> now!!</p>
+    </div>
+    <div class="overlay" id="overlay2"></div>
+    <div class="popup" id="SigninPopup">
+        <h3>Signin</h3>
+        Username<input type="text" id="signinUsername" placeholder="Username" required>
+        Email<input type="text" id="signinEmail" placeholder="email@gmial.com" required>
+        <br>
+        Password<input type="password" id="signinPassword1" placeholder="Password" required>
+        <input type="password" id="signinPassword2" placeholder="Confirm Password" required>
+        <button onclick="passCheck()"><b>Register</b></button>
+        <button style="margin-left: 70px;" onclick="closeSignin()">Cancel</button>
+    </div>
+    <div class="overlay" id="overlay3"></div>
+    <div class="popup" id="myForm">
+        <div class="container">
+
+            <form action="#">
+
+                <div class="row">
+
+                    <div class="col">
+                        <h3 class="title">
+                            Billing Address
+                        </h3>
+
+                        <div class="inputBox">
+                            <label for="name">
+                                Full Name:
+                            </label>
+                            <input type="text" id="name" placeholder="Enter your full name" required>
+                        </div>
+
+                        <div class="inputBox">
+                            <label for="email">
+                                Email:
+                            </label>
+                            <input type="text" id="email" placeholder="Enter email address" required>
+                        </div>
+
+                        <div class="inputBox">
+                            <label for="address">
+                                Address:
+                            </label>
+                            <input type="text" id="address" placeholder="Enter address" required>
+                        </div>
+
+                        <div class="inputBox">
+                            <label for="city">
+                                City:
+                            </label>
+                            <input type="text" id="city" placeholder="Enter city" required>
+                        </div>
+
+                        <div class="flex">
+
+                            <div class="inputBox">
+                                <label for="state">
+                                    State:
+                                </label>
+                                <input type="text" id="state" placeholder="Enter state" required>
+                            </div>
+
+                            <div class="inputBox">
+                                <label for="zip">
+                                    Zip Code:
+                                </label>
+                                <input type="number" id="zip" placeholder="123 456" required>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="col">
+                        <h3 class="title">Payment</h3>
+
+                        <div class="inputBox">
+                            <label for="name">
+                                Card Accepted:
+                            </label>
+                            <img src="cards.png" alt="credit/debit card image">
+                        </div>
+
+                        <div class="inputBox">
+                            <label for="cardName">
+                                Name On Card:
+                            </label>
+                            <input type="text" id="cardName" placeholder="Enter card name" required>
+                        </div>
+
+                        <div class="inputBox">
+                            <label for="cardNum">
+                                Credit Card Number:
+                            </label>
+                            <input type="text" id="cardNum" placeholder="1111-2222-3333-4444" maxlength="19" required>
+                        </div>
+
+                        <div class="inputBox">
+                            <label for="">Exp Month:</label>
+                            <select name="" id="">
+                                <option value="">Choose month</option>
+                                <option value="January">January</option>
+                                <option value="February">February</option>
+                                <option value="March">March</option>
+                                <option value="April">April</option>
+                                <option value="May">May</option>
+                                <option value="June">June</option>
+                                <option value="July">July</option>
+                                <option value="August">August</option>
+                                <option value="September">September</option>
+                                <option value="October">October</option>
+                                <option value="November">November</option>
+                                <option value="December">December</option>
+                            </select>
+                        </div>
+
+
+                        <div class="flex">
+                            <div class="inputBox">
+                                <label for="">Exp Year:</label>
+                                <select name="" id="">
+                                    <option value="">Choose Year</option>
+                                    <option value="2023">2023</option>
+                                    <option value="2024">2024</option>
+                                    <option value="2025">2025</option>
+                                    <option value="2026">2026</option>
+                                    <option value="2027">2027</option>
+                                </select>
+                            </div>
+
+                            <div class="inputBox">
+                                <label for="cvv">CVV</label>
+                                <input type="number" id="cvv" placeholder="1234" required>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <input type="submit" value="Proceed to Checkout" class="submit_btn">
+                <button value="Cancel" onclick="closeTrans()" class="submit_btn">Cancel</button>
+
+            </form>
+
+        </div>
+    </div>
+
+
+    <div class="container2">
+        <main class="row">
+
+            <section class="col left">
+
+                <div class="contactTitle">
+                    <h1>CONTACT US</h1>
+                    <h3>Get In Touch With Our Team</h3>
+                    <p>Please complete this form if you are interested in discussing our services in more detail.</p>
+                </div>
+
+                <div class="contactInfo">
+                    <div class="iconGroup">
+                        <div class="icon">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
+                        <div class="details">
+                            <span>Phone</span>
+                            <span>+91 85009 66970</span>
+                        </div>
+                    </div>
+                    <div class="iconGroup">
+                        <div class="icon">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <div class="details">
+                            <span>Email</span>
+                            <span>defortress@gmail.com</span>
+                        </div>
+                    </div>
+                    <div class="iconGroup">
+                        <div class="icon">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <div class="details">
+                            <span>Location</span>
+                            <span>Amrita Vishwa Vidyapeetham</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="socialMedia">
+                    <a href="https://www.facebook.com/share/2AVCtBSJFuyLwMz8/?mibextid=qi2Omg"><i
+                            class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/_yashu_oo7?igsh=MW9kNW80Nnc0cThmeA=="><i
+                            class="fa-brands fa-instagram"></i></a>
+                    <a href="https://x.com/yashu_oo7"><i class="fa-brands fa-xing"></i></a>
+                    <a href="https://www.linkedin.com/in/ch-yaswanth/"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+
+            </section>
+
+            <section class="col right" id="contact">
+
+                <form class="messageForm">
+                    <div class="inputGroup halfWidth">
+                        <input type="text" name="salutation" required="required">
+                        <label>Salutation</label>
+                    </div>
+                    <div class="inputGroup halfWidth">
+                        <input type="text" name="name" required="required">
+                        <label>Your Name</label>
+                    </div>
+                    <div class="inputGroup halfWidth">
+                        <input type="email" name="email" required="required">
+                        <label>Email</label>
+                    </div>
+                    <div class="inputGroup halfWidth">
+                        <input type="text" name="phone" required="required">
+                        <label>Phone</label>
+                    </div>
+                    <div class="inputGroup fullWidth">
+                        <input type="text" name="subject" required="required">
+                        <label>Subject</label>
+                    </div>
+                    <div class="inputGroup fullWidth">
+                        <textarea name="message" required="required"></textarea>
+                        <label>Say Something</label>
+                    </div>
+                    <div class="inputGroup fullWidth">
+                        <button type="submit">Send Message</button>
+                    </div>
+                </form>
+            </section>
+
+            <a href="#" class="back-to-top">
+                <span class="material-icons">arrow_upward</span>
+            </a>
+        </main>
+    </div>
+    <footer class="footer">
+        <div class="containerf">
+            <div class="footer-brand">
+                <a href="#home"><img class="brand" src="defortress-high-resolution-logo-white-transparent.png"></a>
+            </div>
+            <ul class="footer-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="footer-social">
+                <a href="https://www.facebook.com/share/2AVCtBSJFuyLwMz8/?mibextid=qi2Omg"><i
+                        class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/_yashu_oo7?igsh=MW9kNW80Nnc0cThmeA=="><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://x.com/yashu_oo7"><i class="fab fa-xing"></i></a>
+                <a href="https://www.linkedin.com/in/ch-yaswanth/"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 DeFortress Security Services. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+<script>
+    function UpCheck() {
+        let x = document.getElementById("signinPassword2").value;
+        let y = document.getElementById("loginPassword").value;
+        let a = document.getElementById("loginUsername").value;
+        let b = document.getElementById("signinUsername").value;
+
+        if (x == y && a == b) {
+            login();
+        }
+        else {
+            alert("Incorrect Username and Password");
+        }
+    }
+
+    function passCheck() {
+        let x = document.getElementById("signinPassword2").value;
+        let y = document.getElementById("signinPassword1").value;
+
+        if (x == y) {
+            closeSignin();
+            openLogin();
+        }
+        else {
+            alert("Passwords don't match!!");
+        }
+    }
+
+    function openLogin() {
+        document.getElementById('loginPopup').style.display = 'block';
+        document.getElementById('overlay1').style.display = 'block';
+    }
+
+    function closeLogin() {
+        document.getElementById('loginPopup').style.display = 'none';
+        document.getElementById('overlay1').style.display = 'none';
+    }
+
+    function login() {
+        var username = document.getElementById('loginUsername').value;
+        document.getElementById('username').innerText = 'Welcome, ' + username;
+        window.location.href = "#home";
+        closeLogin();
+    }
+
+    function signUp() {
+        document.getElementById('SigninPopup').style.display = 'block';
+        document.getElementById('overlay2').style.display = 'block';
+    }
+
+    function closeSignin() {
+        document.getElementById('SigninPopup').style.display = 'none';
+        document.getElementById('overlay2').style.display = 'none';
+    }
+    function myFunction() {
+
+        let element = document.body;
+        element.classList.toggle("dark");
+        const initialImage = '2.jpg';
+        const newImage = '1.jpg';
+        let elementHero = document.getElementById("imghero");
+        if (elementHero.style.backgroundImage.includes(initialImage)) {
+            elementHero.style.backgroundImage = `url(${newImage})`;
+        } else {
+            elementHero.style.backgroundImage = `url(${initialImage})`;
+        }
+    }
+    function openForm() {
+        document.getElementById("myForm").style.display = 'block';
+        document.getElementById("overlay3").style.display = 'block';
+        let cardNumInput =
+            document.querySelector('#cardNum')
+
+        cardNumInput.addEventListener('keyup', () => {
+            let cNumber = cardNumInput.value
+            cNumber = cNumber.replace(/\s/g, "")
+
+            if (Number(cNumber)) {
+                cNumber = cNumber.match(/.{1,4}/g)
+                cNumber = cNumber.join(" ")
+                cardNumInput.value = cNumber
+            }
+        })
+    }
+    function closeTrans() {
+        document.getElementById("myForm").style.display = 'none';
+        document.getElementById("overlay3").style.display = 'none';
+    }
+</script>
+
+</html>

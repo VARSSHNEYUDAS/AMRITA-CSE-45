@@ -1,0 +1,395 @@
+<html>
+<head>
+    <title>DeFortress Security Services</title>
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background-color: #403f4f;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+        header{
+            background-color: rgb(10, 10, 40, 0.65);
+            padding-right: 20px;
+            display: flex;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 0;
+        }
+        header img{
+            height: 80px;
+            margin: 15px;
+            padding-right: 10px;
+        }
+        nav{
+            flex-grow: 1;
+            text-align: right;
+            font-family:Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 18px;
+        }
+        nav a{
+            display: inline-block;
+            color: #ffd700;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        nav a:hover{
+            background-color: #575757;
+            color: #fff;
+        }
+        .login-container{
+            display: flex;
+            align-items: center;
+            border-left: 2px solid #ffd700;
+            padding-left: 20px;
+        }
+        .login-button{
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            margin-left: 10px;
+            transition: transform 0.3s;
+        }
+        .login-button:hover{
+            transform: scale(1.1);
+        }
+        .hero{
+            background: url('1.jpg') no-repeat center center/cover;
+            height: 100%;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .hero h2{
+            background: linear-gradient(to right, #d5bc2e, #bf8925);
+  	        background-clip: text;
+  	        color: transparent;
+            font-size: 48px;
+        }
+        .content{
+            padding: 20px;
+        }
+        .content h3{
+            color: #ffd700;
+            margin-top: 0;
+        }
+        .content p{
+            line-height: 1.6;
+        }
+        .services{
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .service{
+            background-color: #1a1a1a;
+            margin: 10px;
+            padding: 20px;
+            flex: 1 1 calc(33% - 40px);
+            box-sizing: border-box;
+        }
+        .service h4{
+            color: #ffd700;
+        }
+        .service p{
+            color: #ccc;
+        }
+        footer{
+            background-color: #333;
+            color: #ccc;
+            text-align: center;
+            padding: 10px;
+        }
+        footer a{
+            color: #ffd700;
+            text-decoration: none;
+        }
+        .popup{
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgb(26, 26, 26, 0.5);
+            padding: 50px;
+            z-index: 10;
+            border-radius: 2%;
+        }
+        .popup h3{
+            color: #ffd700;
+            margin-top: 0;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+        .popup input{
+            display: block;
+            margin: 10px 0;
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .popup button{
+            background-color: #ffd700;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .popup button:hover{
+            background-color: #e5c100;
+            transform: scale(1.1);
+        }
+        .overlay{
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(56, 56, 56, 0.2);
+            z-index: 5;
+            backdrop-filter: blur(5px);
+        }
+        .popup a{
+            color: #ffd700;
+            text-decoration: none;
+        }
+        .popup a:hover{
+            text-decoration: underline;
+        }
+        .dark{
+            background-color: #222;
+            color: #e6e6e6;
+        }
+        .dark header{
+            background-color:rgb(204, 204, 204, 0.5);
+        }
+        #slideshow {
+        overflow: hidden;
+        height: 700px;
+        width: auto;
+        margin:5px;
+    }
+     
+    /* Style each of the sides 
+    with a fixed width and height */
+     
+    .slide {
+        float: left;
+        height: 700px;
+        width: 1510px;
+    }
+     
+    /* Add animation to the slides */
+     
+    .slide-wrapper {
+         
+        /* Calculate the total width on the
+      basis of number of slides */
+        width: calc(1510px * 4);
+         
+        /* Specify the animation with the
+      duration and speed */
+        animation: slide 10s ease infinite;
+    }
+     
+    /* Set the background color
+    of each of the slides */
+     
+    .slide:nth-child(1) {
+        background: transparent;
+    }
+     
+    .slide:nth-child(2) {
+        background: transparent;
+    }
+     
+    .slide:nth-child(3) {
+        background: transparent;
+    }
+     
+    .slide:nth-child(4) {
+        background: transparent;
+    }
+     
+    /* Define the animation 
+    for the slideshow */
+     
+    @keyframes slide {
+         
+        /* Calculate the margin-left for 
+      each of the slides */
+        20% {
+            margin-left: 0px;
+        }
+        40% {
+            margin-left: calc(-1510px * 1);
+        }
+        60% {
+            margin-left: calc(-1510px * 2);
+        }
+        80% {
+            margin-left: calc(-1510px * 3);
+        }
+    }
+    </style>
+</head>
+<body id="home">
+    <header>
+        <img src="defortress-high-resolution-logo-transparent.png" alt="Logo">
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#services">Services</a>
+            <a href="#about">About Us</a>
+            <a href="#contact">Contact</a>
+            <a onclick="myFunction()">Switch mode</a>
+        </nav>
+        <div class="login-container">
+            <button class="login-button" onclick="openLogin()">
+                <svg width="24" height="24" fill="#ffd700" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                </svg>
+            </button>
+        </div>
+        <span id="username" style="color: #ffd700;"></span>
+    </header>
+    <div id="slideshow">
+        <div class="slide-wrapper">
+             
+            <!-- Define each of the slides
+         and write the content -->
+            <div class="slide">
+                <h1 class="slide-number">
+                    <img src="C:\Users\suman\OneDrive\Desktop\UID\PROJECT\1.jpg" height="700px" width="1510px">
+                </h1> 
+            </div>
+            <div class="slide">
+                <h1 class="slide-number">
+                    <img src="C:\Users\suman\OneDrive\Desktop\UID\PROJECT\2.jpg" height="700px" width="1510px">
+                </h1> 
+            </div>
+            <div class="slide">
+                <h1 class="slide-number">
+                    This is an example of
+                </h1> 
+            </div>
+            <div class="slide">
+                <h1 class="slide-number">
+                    Slideshow with HTML and CSS only
+                </h1> 
+            </div>
+        </div>
+    </div>
+    <div class="hero" id="imghero">
+        <h2>We Protect | What Matters</h2>
+    </div>
+    <div class="content">
+        <h3>Welcome to Elite Security Services</h3>
+        <p>We provide top-notch security solutions to ensure your safety and peace of mind. Our team of highly trained professionals is dedicated to protecting you, your property, and your business.</p>
+    </div>
+    <div class="content" id="services">
+        <h3>Our Services</h3>
+        <div class="services">
+            <div class="service">
+                <h4>Residential Security</h4>
+                <p>Comprehensive security solutions for your home, including alarm systems, monitoring, and patrol services.</p>
+            </div>
+            <div class="service">
+                <h4>Commercial Security</h4>
+                <p>Advanced security measures for businesses, including surveillance, access control, and on-site security personnel.</p>
+            </div>
+            <div class="service">
+                <h4>Event Security</h4>
+                <p>Professional security services for events of all sizes, ensuring the safety and security of all attendees.</p>
+            </div>
+        </div>
+    </div>
+    <div class="content" id="about">
+        <h3>About Us</h3>
+        <p>Elite Security Services has been a trusted name in the security industry for over a decade. Our commitment to excellence and our focus on client satisfaction set us apart from the competition.</p>
+    </div>
+    <div class="content" id="contact">
+        <h3>Contact Us</h3>
+        <p>If you have any questions or would like to request a quote, please do not hesitate to contact us. You can reach us at:</p>
+        <p>Email: <a href="mailto:info@elitesecurity.com">info@elitesecurity.com</a></p>
+        <p>Phone: (123) 456-7890</p>
+    </div>
+    <footer>
+        <p>&copy; 2024 Elite Security Services. All rights reserved.</p>
+    </footer>
+
+    <div class="overlay" id="overlay1"></div>
+    <div class="popup" id="loginPopup">
+        <h3>Login</h3><br>
+        <input type="text" id="loginUsername" placeholder="Username">
+        <input type="password" id="loginPassword" placeholder="Password"><br>
+        <button onclick="login()"><b>Login</b></button>
+        <button style="margin-left: 70px;" onclick="closeLogin()"><b>Cancel</b></button>
+        <p>Not signed in yet? <a href="#" onclick="signUp(); closeLogin()">Register</a> now!!</p>
+    </div>
+    <div class="overlay" id="overlay2"></div>
+    <div class="popup" id="SigninPopup">
+        <h3>Signin</h3>
+        <input type="text" id="loginUsername" placeholder="Username">
+        <input type="text" id="Email/Mobil no" placeholder="Email/Mobil no">
+        <input type="password" id="loginPassword" placeholder="Password">
+        <input type="password" id="Conform Password" placeholder="Conform Password">
+        <button onclick="login()">Signup</button>
+        <button style="margin-left:70px;"onclick="closeSignin()">
+            <b>Cancel</b>
+        </button>
+    </div>
+
+    <script>
+        function openLogin(){
+            document.getElementById('loginPopup').style.display = 'block';
+            document.getElementById('overlay1').style.display = 'block';
+        }
+
+        function closeLogin(){
+            document.getElementById('loginPopup').style.display = 'none';
+            document.getElementById('overlay1').style.display = 'none';
+        }
+
+        function login(){
+            var username = document.getElementById('loginUsername').value;
+            document.getElementById('username').innerText = 'Welcome, ' + username;
+            window.location.href = "#home";
+            closeLogin();
+        }
+
+        function signUp(){
+            document.getElementById('SigninPopup').style.display = 'block';
+            document.getElementById('overlay2').style.display = 'block';
+        }
+
+        function closeSignin(){
+            document.getElementById('SigninPopup').style.display = 'none';
+            document.getElementById('overlay2').style.display = 'none';
+        }
+        function myFunction() {
+
+            let element = document.body;
+            element.classList.toggle("dark");
+            const initialImage = '2.jpg';
+            const newImage = '1.jpg';
+            let elementHero = document.getElementById("imghero");
+            if (elementHero.style.backgroundImage.includes(initialImage)) {
+                elementHero.style.backgroundImage = `url(${newImage})`;
+            } else {
+                elementHero.style.backgroundImage = `url(${initialImage})`;
+            }
+        }
+    </script>
+    </script>
+</body>
+</html>

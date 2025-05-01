@@ -1,0 +1,97 @@
+<html>
+<head><title>UID Project</title>
+<link rel="stylesheet" href="Project.css">
+</head>
+<body>
+<script type="text/javascript">
+var uname = doucument.getElementById("uname").value;
+function myfirst(){
+if(uname=="Das"){
+alert("Login successfully");
+window.location="C:\Users\suman\OneDrive\Documents\HTML\Loginjs.html";
+}
+else{
+alert("Incorrect Username");
+
+}
+</script>
+<div class="a">
+<img src="C:\Users\suman\OneDrive\Documents\HTML\IMAGES\img2.png" height=150px width=150px style="padding:30px 0px 0px 15px;float:left;position:relative;vertical-align:middle">
+
+<button class="compname"> COMPANY NAME </button>
+<button class="button"> Home </button>
+<button> Registration </button>
+<button> Services </button>
+<button> Customer Care </button>
+<button onclick="document.getElementById('id01').style.display='block'">Login</button>
+
+<!-- The Modal -->
+<div id="id01" class="modal">
+  <span onclick="document.getElementById('id01').style.display='none'"
+class="close" title="Close Modal">&times;</span>
+
+  <!-- Modal Content -->
+  <form class="modal-content animate" action="UIDProject.html">
+    <div class="imgcontainer">
+      <img src="img_avatar2.png" alt="Avatar" class="avatar">
+    </div>
+
+    <div class="container">
+      <label for="uname"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="uname" id="uname" required>
+
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" required>
+
+      <button type="submit" onclick="myfirst()"/>Login</button>
+      <label>
+        <input type="checkbox" checked="checked" name="remember"> Remember me
+      </label>
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+      <span class="psw">Forgot <a href="#">password?</a></span>
+    </div>
+  </form>
+</div>
+
+
+</div>
+<div class="img">
+
+<video height=auto width=1460px autoplay muted loop style="text-align:right;">
+<source src="C:\Users\suman\OneDrive\Documents\HTML\VIDEOS\Untitled video - Made with Clipchamp.mp4" type="video/mp4">
+</video>
+</div>
+<div class="c">
+<h1 class="sidehead">ACHIEVEMENTS</h1>
+<div class="a1">
+<img src="C:\Users\suman\OneDrive\Documents\HTML\IMAGES\sec1.jpg" class="a1img">
+<p>Security Excellence Award</p>
+<p style="font-size:25px;">The Security Excellence Award is an annual event that recognizes individuals and companies that have demonstrated excellence in information security.</p>
+</div>
+<div class="a1">
+<div ><img src="C:\Users\suman\OneDrive\Documents\HTML\IMAGES\cs1.jpg" class="a1img"></img></div>
+<div class="text"><p>Cloud Security Awards</p>
+<p style="font-size:25px;">The Cloud Security Awards strives to represent security solutions from across the globe</p></div>
+</div>
+<div class="a1">
+<div ><img src="C:\Users\suman\OneDrive\Documents\HTML\IMAGES\cs2.jpg" class="a1img"></img></div>
+<div class="text"><p>National Cyber Awards</p>
+<p style="font-size:25px;">National Cyber Awards rewards are given to those who are committed to cyber innovation, cyber crime reduction and protecting citizens online.</div>
+</div>
+<div class="a1">
+<div ><img src="C:\Users\suman\OneDrive\Documents\HTML\IMAGES\cs3.jpg" class="a1img"></img></div>
+<div class="text"><p>Computing Security Awards</p>
+<p style="font-size:25px;">Computing Security Awards celebrate the achievements of the security industry over the last year by recognising and rewarding the companies, people, products, and projects that keep the rest of us safe .</div>
+</div>
+</div>
+<div class="info">
+<div class="compinfo">
+<p> Contact Info: </p>
+<p>Best Security Service Provider In Delhi, Noida, Gurgaon & All Across The Ncr. Proman Securitech Pvt. Ltd. – (ISO 9001:2015 Certified. Proman Securitech was established some 19 years ago.</p>
+</div>
+</div>
+</body>
+</html>
