@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fisherman Helper - Fish Quality Analysis</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+
+        header {
+            background-color: #0077b5;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+        }
+
+        header p {
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+
+        /* Form and Input Styles */
+        form {
+            display: flex;
+            flex-direction: column;
+            margin: 20px auto;
+            max-width: 500px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        form label {
+            font-size: 1em;
+            margin-bottom: 8px;
+        }
+
+        form input,
+        form button {
+            padding: 10px;
+            margin-bottom: 20px;
+            font-size: 1em;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        form button {
+            background-color: #0077b5;
+            color: white;
+            cursor: pointer;
+        }
+
+        form button:hover {
+            background-color: #0077b5;
+        }
+
+        /* Analysis Result Section */
+        #analysisResult {
+            margin: 20px auto;
+            padding: 20px;
+            max-width: 600px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        #analysisResult h3 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        #analysisResult p {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+
+        #analysisResult .result-summary {
+            font-weight: bold;
+            font-size: 1.5em;
+            margin-top: 20px;
+        }
+
+        /* Color-coded result based on FQI score */
+        .fqi-optimal {
+            background-color: #d4edda; /* Green background */
+            border: 2px solid #0077b5;
+            color: #0077b5;
+        }
+
+        .fqi-good {
+            background-color: #fff3cd; /* Yellow background */
+            border: 2px solid #ffc107;
+            color: #856404;
+        }
+
+        .fqi-suboptimal {
+            background-color: #fff3cd; /* Yellow background */
+            border: 2px solid #ffc107;
+            color: #856404;
+        }
+
+        .fqi-poor {
+            background-color: #f8d7da; /* Red background */
+            border: 2px solid #dc3545;
+            color: #721c24;
+        }
+
+        /* General Footer Styles */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 1em;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            form {
+                width: 90%;
+            }
+
+            #analysisResult {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Fisherman Helper</h1>
+        <p>Empowering Fishers for Sustainability</p>
+    </header>
+
+    <main>
+        <section id="form-section">
+            <h2>Fish Quality Analysis</h2>
+            <form id="waterQualityForm">
+                <label for="temperature">Temperature (°C):</label>
+                <input type="number" id="temperature" name="temperature" required>
+
+                <label for="pH">pH:</label>
+                <input type="number" id="pH" name="pH" required step="0.1">
+
+                <label for="oxygen">Dissolved Oxygen (mg/L):</label>
+                <input type="number" id="oxygen" name="oxygen" required>
+
+                <label for="ammonia">Ammonia (mg/L):</label>
+                <input type="number" id="ammonia" name="ammonia" required>
+
+                <button type="submit">Analyze Fish Quality</button>
+                <a href="gallery.html">NEXT</a>
+            </form>
+        </section>
+
+        <section id="analysisResult">
+            <!-- The result of the analysis will be displayed here -->
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Fisherman Helper. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Fish Quality Analysis Function
+        function analyzeFishQuality(temperature, pH, dissolvedOxygen, ammonia) {
+            // Define the optimal ranges for each parameter
+            const optimalRanges = {
+                temperature: { min: 24, max: 30 },
+                pH: { min: 6.5, max: 8.5 },
+                dissolvedOxygen: { min: 5, max: 8 },
+                ammonia: { max: 0.5 }
+            };
+
+            function calculateScore(value, min, max) {
+                if (value >= min && value <= max) {
+                    return 100;
+                } else if (value < min || value > max) {
+                    return 50;
+                } else {
+                    return 0;
+                }
+            }
+
+            // Calculate scores for each parameter
+            const tempScore = calculateScore(temperature, optimalRanges.temperature.min, optimalRanges.temperature.max);
+            const pHScore = calculateScore(pH, optimalRanges.pH.min, optimalRanges.pH.max);
+            const oxygenScore = calculateScore(dissolvedOxygen, optimalRanges.dissolvedOxygen.min, optimalRanges.dissolvedOxygen.max);
+            const ammoniaScore = ammonia <= optimalRanges.ammonia.max ? 100 : 0;
+
+            // Calculate the overall Fish Quality Index (FQI) by averaging the scores
+            const FQI = (tempScore + pHScore + oxygenScore + ammoniaScore) / 4;
+
+            return {
+                tempScore,
+                pHScore,
+                oxygenScore,
+                ammoniaScore,
+                FQI
+            };
+        }
+
+        // Handle form submission
+        document.getElementById("waterQualityForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const temperature = parseFloat(document.getElementById("temperature").value);
+            const pH = parseFloat(document.getElementById("pH").value);
+            const oxygen = parseFloat(document.getElementById("oxygen").value);
+            const ammonia = parseFloat(document.getElementById("ammonia").value);
+
+            // Get the analysis result
+            const result = analyzeFishQuality(temperature, pH, oxygen, ammonia);
+
+            // Display the result
+            const resultDiv = document.getElementById("analysisResult");
+            resultDiv.innerHTML = `
+                <h3>Analysis Results</h3>
+                <p>Temperature Score: ${result.tempScore}</p>
+                <p>pH Score: ${result.pHScore}</p>
+                <p>Oxygen Score: ${result.oxygenScore}</p>
+                <p>Ammonia Score: ${result.ammoniaScore}</p>
+                <p>Overall Fish Quality Index (FQI): ${result.FQI}</p>
+            `;
+
+            // Interpret the result
+            if (result.FQI >= 90) {
+                resultDiv.className = "fqi-optimal";
+                resultDiv.innerHTML += "<p class='result-summary'>Fish health is optimal.</p>";
+            } else if (result.FQI >= 70) {
+                resultDiv.className = "fqi-good";
+                resultDiv.innerHTML += "<p class='result-summary'>Fish health is good, but conditions could be improved.</p>";
+            } else if (result.FQI >= 50) {
+                resultDiv.className = "fqi-suboptimal";
+                resultDiv.innerHTML += "<p class='result-summary'>Fish health is suboptimal, corrective actions recommended.</p>";
+            } else {
+                resultDiv.className = "fqi-poor";
+                resultDiv.innerHTML += "<p class='result-summary'>Fish health is poor, urgent intervention required.</p>";
+            }
+        });
+    </script>
+</body>
+</html>

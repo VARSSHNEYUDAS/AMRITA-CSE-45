@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeFortress Security Services</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;400;500;600;800&display=swap" rel="stylesheet">
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #060422;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+        a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        /* Our Team Section */
+        .wrapper {
+            padding: 50px;
+            text-align: center;
+        }
+        .wrapper .title h4 {
+            color: #ffd700;
+            font-size: 36px;
+        }
+        .card_Container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .card {
+            width: 250px;
+            margin: 20px;
+            background: #1f3d47;
+            border-radius: 10px;
+            overflow: hidden;
+            text-align: center;
+            color: #ffd700;
+        }
+        .card img {
+            width: 100%;
+            height: auto;
+        }
+        .sci {
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+        }
+        .sci li {
+            list-style: none;
+            margin: 0 10px;
+        }
+        .sci a {
+            color: #ffd700;
+            font-size: 20px;
+        }
+
+        /* Contact Us Section */
+        .container2 {
+            padding: 50px;
+        }
+        .contactTitle h1, .contactTitle h3 {
+            color: #ffd700;
+        }
+        .contactInfo {
+            margin-bottom: 30px;
+        }
+        .iconGroup {
+            display: flex;
+            align-items: center;
+            margin: 15px 0;
+        }
+        .icon {
+            width: 45px;
+            height: 45px;
+            border: 2px solid dodgerblue;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .icon i {
+            font-size: 20px;
+            color: #fff;
+        }
+        .messageForm {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .messageForm .inputGroup {
+            margin: 20px 0;
+        }
+        .messageForm input, .messageForm textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #cbcbcb;
+            border-radius: 5px;
+            background: #2e2e2e;
+            color: #fff;
+        }
+        .messageForm button {
+            padding: 10px 20px;
+            background: dodgerblue;
+            border: none;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Footer Section */
+        .footer {
+            background: #2c2f33;
+            padding: 20px;
+            text-align: center;
+            color: #fff;
+        }
+        .footer-menu {
+            display: flex;
+            justify-content: center;
+            padding: 0;
+            list-style: none;
+        }
+        .footer-menu li {
+            margin: 0 15px;
+        }
+        .footer-social {
+            margin: 10px 0;
+        }
+        .footer-social a {
+            color: #fff;
+            font-size: 20px;
+            margin: 0 10px;
+        }
+        .footer-bottom {
+            color: #ccc;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .card_Container {
+                flex-direction: column;
+                align-items: center;
+            }
+            .messageForm {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Our Team Section -->
+<div class="wrapper">
+    <div class="title"><h4>Our Team</h4></div>
+    <div class="card_Container">
+        <div class="card"><img src="Rudhra.jpg"><h3>Rudrabhishek</h3></div>
+        <div class="card"><img src="das.jpg"><h3>V Das</h3></div>
+        <div class="card"><img src="yash.jpg"><h3>Yaswanth</h3></div>
+        <div class="card"><img src="chandu.jpg"><h3>Chandu</h3></div>
+       
+    </div>
+</div>
+
+<!-- Contact Us Section -->
+<div class="container2">
+    <div class="contactTitle">
+        <h1>CONTACT US</h1>
+        <h3>Get In Touch With Our Team</h3>
+    </div>
+    <div class="contactInfo">
+        <div class="iconGroup"><div class="icon"><i class="fa-solid fa-phone"></i></div><span>+91 85009 66970</span></div>
+        <div class="iconGroup"><div class="icon"><i class="fa-solid fa-envelope"></i></div><span>aquaculture@gmail.com</span></div>
+        <div class="iconGroup"><div class="icon"><i class="fa-solid fa-location-dot"></i></div><span>Amrita Vishwa Vidyapeetham</span></div>
+    </div>
+    <form class="messageForm">
+        <div class="inputGroup"><input type="text" placeholder="Your Name" required></div>
+        <div class="inputGroup"><input type="email" placeholder="Email" required></div>
+        <div class="inputGroup"><textarea placeholder="Your Message" required></textarea></div>
+        <button type="submit">Send Message</button>
+    </form>
+</div>
+
+<!-- Footer Section -->
+<footer class="footer">
+    <ul class="footer-menu">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="footer-social">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-xing"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2024 Sustainable Aquaculture Platform for SmallScale Fish Farmers. All Rights Reserved.</p>
+    </div>
+</footer>
+
+<!-- JavaScript for Interactive Features -->
+<script>
+    // Back to Top Button
+    const backToTopButton = document.createElement('a');
+    backToTopButton.href = "#";
+    backToTopButton.className = "back-to-top";
+    backToTopButton.innerHTML = '<span class="material-icons">arrow_upward</span>';
+    document.body.appendChild(backToTopButton);
+
+    // Scroll Behavior for Back to Top
+    backToTopButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+</script>
+
+</body>
+</html>
